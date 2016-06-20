@@ -21,6 +21,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CFx-6k-p1v">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ueQ-65-dJo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ju5-j8-uaI"/>
+                                    <barButtonItem title="Item" id="y9E-eM-lrT">
+                                        <connections>
+                                            <action selector="addButtonSelected:" destination="BYZ-38-t0r" id="Q81-7p-p4q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Wle-Kw-TVR"/>
+                                </items>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="756" width="400" height="44"/>
+                                </variation>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -32,6 +47,7 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="CFx-6k-p1v"/>
+                                <exclude reference="ueQ-65-dJo"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Btv-m8-Nfm"/>
@@ -43,6 +59,7 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="CFx-6k-p1v"/>
+                                <include reference="ueQ-65-dJo"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Btv-m8-Nfm"/>

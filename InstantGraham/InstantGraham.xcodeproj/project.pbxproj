@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		632FD9161D1890B800A8D5D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD9151D1890B800A8D5D1 /* HomeViewController.swift */; };
+		632FD9181D189DB300A8D5D1 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD9171D189DB300A8D5D1 /* Setup.swift */; };
 		63E44D2C1D187FDB003D56D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */; };
 		63E44D311D187FDB003D56D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E44D2F1D187FDB003D56D6 /* Main.storyboard */; };
 		63E44D331D187FDB003D56D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E44D321D187FDB003D56D6 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		632FD9151D1890B800A8D5D1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		632FD9171D189DB300A8D5D1 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = ../Setup.swift; sourceTree = "<group>"; };
 		63E44D281D187FDB003D56D6 /* InstantGraham.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantGraham.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63E44D301D187FDB003D56D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +37,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		632FD9191D189DBD00A8D5D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63E44D321D187FDB003D56D6 /* Assets.xcassets */,
+				63E44D341D187FDB003D56D6 /* LaunchScreen.storyboard */,
+				63E44D2F1D187FDB003D56D6 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		632FD91B1D189DFF00A8D5D1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				632FD9151D1890B800A8D5D1 /* HomeViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		632FD91C1D189E4D00A8D5D1 /* App Global */ = {
+			isa = PBXGroup;
+			children = (
+				63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */,
+				63E44D371D187FDB003D56D6 /* Info.plist */,
+				632FD9171D189DB300A8D5D1 /* Setup.swift */,
+			);
+			name = "App Global";
+			sourceTree = "<group>";
+		};
 		63E44D1F1D187FDA003D56D6 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +84,9 @@
 		63E44D2A1D187FDB003D56D6 /* InstantGraham */ = {
 			isa = PBXGroup;
 			children = (
-				63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */,
-				632FD9151D1890B800A8D5D1 /* HomeViewController.swift */,
-				63E44D2F1D187FDB003D56D6 /* Main.storyboard */,
-				63E44D321D187FDB003D56D6 /* Assets.xcassets */,
-				63E44D341D187FDB003D56D6 /* LaunchScreen.storyboard */,
-				63E44D371D187FDB003D56D6 /* Info.plist */,
+				632FD91B1D189DFF00A8D5D1 /* Controller */,
+				632FD9191D189DBD00A8D5D1 /* View */,
+				632FD91C1D189E4D00A8D5D1 /* App Global */,
 			);
 			path = InstantGraham;
 			sourceTree = "<group>";
@@ -137,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E44D2C1D187FDB003D56D6 /* AppDelegate.swift in Sources */,
+				632FD9181D189DB300A8D5D1 /* Setup.swift in Sources */,
 				632FD9161D1890B800A8D5D1 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
