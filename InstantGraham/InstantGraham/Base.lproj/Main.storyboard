@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -31,18 +30,20 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ea1-Zn-rjE" userLabel="imageView" customClass="imageView">
-                                <rect key="frame" x="18" y="64" width="564" height="492"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="gaz-Bx-ytc"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.82" id="3qv-Y2-Jv4"/>
-                            <constraint firstItem="dza-DR-2ec" firstAttribute="centerX" secondItem="Ea1-Zn-rjE" secondAttribute="centerX" id="6Xd-xw-u4o"/>
-                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.94" id="Xin-Gw-Exb"/>
-                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="10" id="git-mQ-2mm"/>
-                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="io3-Qu-v2h"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dza-DR-2ec" secondAttribute="bottom" id="luY-bx-Xyb"/>
-                            <constraint firstItem="dza-DR-2ec" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="msc-FI-04C"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dza-DR-2ec" secondAttribute="bottom" id="0jV-bi-yUw"/>
+                            <constraint firstAttribute="trailing" secondItem="dza-DR-2ec" secondAttribute="trailing" id="Iut-aK-7zr"/>
+                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="QvC-zG-BV9"/>
+                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c74-KM-Acm"/>
+                            <constraint firstItem="dza-DR-2ec" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fBA-4M-1WM"/>
+                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="u4A-tD-Zql"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VUe-Uu-dxf"/>

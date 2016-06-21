@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		632FD9161D1890B800A8D5D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD9151D1890B800A8D5D1 /* HomeViewController.swift */; };
 		632FD9181D189DB300A8D5D1 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD9171D189DB300A8D5D1 /* Setup.swift */; };
+		63503EBB1D19F06000060E17 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503EBA1D19F06000060E17 /* Post.swift */; };
+		63503EBD1D19F09900060E17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503EBC1D19F09900060E17 /* Extensions.swift */; };
+		63503EBF1D19F0E100060E17 /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503EBE1D19F0E100060E17 /* ModelExtensions.swift */; };
+		63503EC11D19F11200060E17 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503EC01D19F11200060E17 /* API.swift */; };
+		63503EC31D19F14C00060E17 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503EC21D19F14C00060E17 /* Filters.swift */; };
+		63DA42971D19ECA40021D194 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DA42961D19ECA40021D194 /* CloudKit.framework */; };
 		63E44D2C1D187FDB003D56D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */; };
 		63E44D311D187FDB003D56D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E44D2F1D187FDB003D56D6 /* Main.storyboard */; };
 		63E44D331D187FDB003D56D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E44D321D187FDB003D56D6 /* Assets.xcassets */; };
@@ -18,6 +24,13 @@
 /* Begin PBXFileReference section */
 		632FD9151D1890B800A8D5D1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		632FD9171D189DB300A8D5D1 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = ../Setup.swift; sourceTree = "<group>"; };
+		63503EBA1D19F06000060E17 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		63503EBC1D19F09900060E17 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		63503EBE1D19F0E100060E17 /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
+		63503EC01D19F11200060E17 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		63503EC21D19F14C00060E17 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		63DA42951D19EC8D0021D194 /* InstantGraham.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = InstantGraham.entitlements; sourceTree = "<group>"; };
+		63DA42961D19ECA40021D194 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		63E44D281D187FDB003D56D6 /* InstantGraham.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantGraham.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63E44D301D187FDB003D56D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -31,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DA42971D19ECA40021D194 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +75,11 @@
 				63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */,
 				63E44D371D187FDB003D56D6 /* Info.plist */,
 				632FD9171D189DB300A8D5D1 /* Setup.swift */,
+				63503EBA1D19F06000060E17 /* Post.swift */,
+				63503EBC1D19F09900060E17 /* Extensions.swift */,
+				63503EC01D19F11200060E17 /* API.swift */,
+				63503EBE1D19F0E100060E17 /* ModelExtensions.swift */,
+				63503EC21D19F14C00060E17 /* Filters.swift */,
 			);
 			name = "App Global";
 			sourceTree = "<group>";
@@ -68,6 +87,7 @@
 		63E44D1F1D187FDA003D56D6 = {
 			isa = PBXGroup;
 			children = (
+				63DA42961D19ECA40021D194 /* CloudKit.framework */,
 				63E44D2A1D187FDB003D56D6 /* InstantGraham */,
 				63E44D291D187FDB003D56D6 /* Products */,
 			);
@@ -84,6 +104,7 @@
 		63E44D2A1D187FDB003D56D6 /* InstantGraham */ = {
 			isa = PBXGroup;
 			children = (
+				63DA42951D19EC8D0021D194 /* InstantGraham.entitlements */,
 				632FD91B1D189DFF00A8D5D1 /* Controller */,
 				632FD9191D189DBD00A8D5D1 /* View */,
 				632FD91C1D189E4D00A8D5D1 /* App Global */,
@@ -123,7 +144,12 @@
 				TargetAttributes = {
 					63E44D271D187FDB003D56D6 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = FXK8A3SME8;
+						DevelopmentTeam = Y46ZLX9Z9E;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -163,9 +189,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63503EBD1D19F09900060E17 /* Extensions.swift in Sources */,
+				63503EC31D19F14C00060E17 /* Filters.swift in Sources */,
+				63503EBF1D19F0E100060E17 /* ModelExtensions.swift in Sources */,
 				63E44D2C1D187FDB003D56D6 /* AppDelegate.swift in Sources */,
 				632FD9181D189DB300A8D5D1 /* Setup.swift in Sources */,
 				632FD9161D1890B800A8D5D1 /* HomeViewController.swift in Sources */,
+				63503EBB1D19F06000060E17 /* Post.swift in Sources */,
+				63503EC11D19F11200060E17 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +311,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = InstantGraham/InstantGraham.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = InstantGraham/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tl.david.InstantGraham;
@@ -291,6 +324,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = InstantGraham/InstantGraham.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = InstantGraham/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tl.david.InstantGraham;
