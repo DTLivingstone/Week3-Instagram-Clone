@@ -8,27 +8,18 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, Setup {
+class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
-    
-    lazy var imagePicker: UIImagePickerController()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    lazy var imagePicker = UIImagePickerController()
     
     func setup() {
         self.navigationItem.title = "InstantGraham"
     }
     
-    func setupApperance() {
-        self.imageView.layer.cornerRadius = 30
+    func setupAppearance() {
+//        self.imageView.layer.cornerRadius = 30
     }
     
     func presentActionSheet() {
@@ -50,7 +41,7 @@ class HomeViewController: UIViewController, Setup {
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
     
-    func presentImagePicker(sourceType: UIImagePickerControllerSource) {
+    func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
         self.presentViewController(self.imagePicker,
@@ -60,21 +51,26 @@ class HomeViewController: UIViewController, Setup {
     
     //MARK: UIImagePickerControllerDeligate
     
-    func imagePickerControllerDidCancel() {
-        //
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.imageView.image = image
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setup()
+        self.setupAppearance()
     }
 
-    func imagePickerController(picker: UIImagePickerController) {
-        //
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     @IBAction func addButtonSelected(sender: AnyObject) {
-        
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             self.presentActionSheet()
         } else {
             self.presentImagePicker(.PhotoLibrary)
         }
     }
-    
 }
