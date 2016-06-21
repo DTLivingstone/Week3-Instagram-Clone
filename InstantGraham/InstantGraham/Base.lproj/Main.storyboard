@@ -30,7 +30,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tdK-9x-XDE"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ea1-Zn-rjE" customClass="imageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ea1-Zn-rjE" userLabel="imageView" customClass="imageView">
                                 <rect key="frame" x="18" y="64" width="564" height="492"/>
                             </imageView>
                         </subviews>

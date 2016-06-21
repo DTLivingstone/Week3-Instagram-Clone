@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     }
     
     func setupAppearance() {
-//        self.imageView.layer.cornerRadius = 30
+        self.imageView.layer.cornerRadius = 30
     }
     
     func presentActionSheet() {
