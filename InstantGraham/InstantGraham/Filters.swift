@@ -35,15 +35,15 @@ class Filters {
             })
         }
     }
-        class func vingate(image: UIImage, completion: FiltersCompletion) {
-        self.filter("CIPhotoEffectTransfer", image: image, completion: completion)
+    class func dotScreen(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CIDotScreen", image: image, completion: completion)
     }
     
-    class func bw(image: UIImage, completion: FiltersCompletion) {
-        self.filter("CIPhotoEffectMono", image: image, completion: completion)
+    class func blur(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CIGaussianBlur", image: image, completion: completion)
     }
     
-    class func chrome(image: UIImage, completion: FiltersCompletion) {
-        self.filter("CIPhotoEffectChrome", image: image, completion: completion)
+    class func crystallize(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CICrystallize", image: image, completion: completion)
     }
 }
