@@ -315,7 +315,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = InstantGraham/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tl.david.InstantGraham;
+				PRODUCT_BUNDLE_IDENTIFIER = tl.david.InstantGraham2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -328,7 +328,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = InstantGraham/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tl.david.InstantGraham;
+				PRODUCT_BUNDLE_IDENTIFIER = tl.david.InstantGraham2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
