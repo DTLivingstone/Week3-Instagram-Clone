@@ -7,3 +7,21 @@
 //
 
 import UIKit
+
+import UIKit
+class Post {
+    let image : UIImage
+    
+    init( image: UIImage) {
+        self.image = image
+    }
+}
+
+extension NSURL {
+    static func imageURL() -> NSURL {
+        guard let documentDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else {
+            fatalError("error getting document")
+        }
+        return documentDirectory.URLByAppendingPathComponent("image")
+    }
+}
