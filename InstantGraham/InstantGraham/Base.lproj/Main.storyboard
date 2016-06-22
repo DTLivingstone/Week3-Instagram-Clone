@@ -29,7 +29,7 @@
                                 <items>
                                     <barButtonItem systemItem="edit" id="dfn-1K-Ejp">
                                         <connections>
-                                            <action selector="editButtonSelected:" destination="BYZ-38-t0r" id="BgZ-wB-luc"/>
+                                            <action selector="editButtonSelected:" destination="BYZ-38-t0r" id="SRZ-rh-7M1"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="buu-lW-zT7"/>
@@ -61,7 +61,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ImageView" destination="Ea1-Zn-rjE" id="ANA-2d-JQ1"/>
-                        <outlet property="editButtonSelected" destination="dza-DR-2ec" id="WwF-4d-ien"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

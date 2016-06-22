@@ -9,9 +9,9 @@
 import UIKit
 
 class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
-
+    
     lazy var imagePicker = UIImagePickerController()
     
     func setup() {
@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
                                         style: .Default) {(action) in self.presentImagePicker(.PhotoLibrary)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            
+        
         actionSheet.addAction(cameraAction)
         actionSheet.addAction(photoAction)
         actionSheet.addAction(cancelAction)
@@ -45,8 +45,8 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
         self.presentViewController(self.imagePicker,
-                                animated: true,
-                                completion: nil)
+                                   animated: true,
+                                   completion: nil)
     }
     
     //MARK: UIImagePickerControllerDeligate
@@ -54,9 +54,9 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     @IBAction func editButtonSelected(sender: AnyObject) {
         guard let image = self.imageView.image else { return }
         
-        let actionSheet = UIAlertController(title: "FIlters",
-                                            message: "Please select a filter.",
-                                            preferredStyle: ???)
+        //        let actionSheet = UIAlertController(title: "FIlters",
+        //                                            message: "Please select a filter.",
+        //                                            preferredStyle: ???)
         
         Filters.bw(image) { (theImage) in
             self.imageView.image = theImage
@@ -91,7 +91,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
         self.setup()
         self.setupAppearance()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
