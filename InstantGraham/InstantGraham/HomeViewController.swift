@@ -51,6 +51,36 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     
     //MARK: UIImagePickerControllerDeligate
     
+    @IBAction func editButtonSelected(sender: AnyObject) {
+        guard let image = self.imageView.image else { return }
+        
+        let actionSheet = UIAlertController(title: "FIlters",
+                                            message: "Please select a filter.",
+                                            preferredStyle: ???)
+        
+        Filters.bw(image) { (theImage) in
+            self.imageView.image = theImage
+        }
+    }
+    
+    @IBAction func addButtonSelected(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            self.presentActionSheet()
+        } else {
+            self.presentImagePicker(.PhotoLibrary)
+        }
+    }
+    
+    @IBAction func saveButtonSelected(sender: AnyObject) {
+        guard let image = self.imageView.image else { return }
+        API.shared.write(Post(image: image)) { (success) in
+            if success {
+                print("Yay")
+            }
+        }
+    }
+    
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.imageView.image = image
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -64,13 +94,5 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func addButtonSelected(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            self.presentActionSheet()
-        } else {
-            self.presentImagePicker(.PhotoLibrary)
-        }
     }
 }
