@@ -18,7 +18,7 @@ class FiltersPreviewViewController: UIViewController, UICollectionViewDataSource
 
     weak var delegate: FiltersPreviewViewControllerProtocol?
     
-    let filters = [Filters.shared.originalImage, Filters.shared.bw]
+    let filters = [Filters.shared.originalImage, Filters.shared.bw, Filters.shared.dotScreen, Filters.shared.crystallize]
     var post = Post()
     
     class func identifier() -> String {

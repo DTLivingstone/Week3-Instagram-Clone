@@ -14,3 +14,7 @@ func oddBall(userArray: [Int]) -> [Int] {
 let myArray = [1, 2, 5, 7, 12, 24, 67]
 
 oddBall(myArray)
+
+for name in CIFilter.filterNamesInCategories(nil){
+    print(name)
+}

@@ -52,4 +52,12 @@ class Filters {
     func bw(image: UIImage, completion: FiltersCompletion) {
         self.filter("CIPhotoEffectMono", image: image, completion: completion)
     }
+    
+    func dotScreen(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CIDotScreen", image: image, completion: completion)
+    }
+    
+    func crystallize(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CICrystallize", image: image, completion: completion)
+    }
 }
