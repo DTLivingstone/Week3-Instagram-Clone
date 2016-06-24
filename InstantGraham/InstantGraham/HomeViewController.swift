@@ -51,15 +51,11 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     
     //MARK: UIImagePickerControllerDeligate
     
-    @IBAction func editButtonSelected(sender: AnyObject) {
-        guard let image = self.imageView.image else { return }
-        
-        //        let actionSheet = UIAlertController(title: "FIlters",
-        //                                            message: "Please select a filter.",
-        //                                            preferredStyle: ???)
-        
-        Filters.shared.dotScreen(image) { (theImage) in
-            self.imageView.image = theImage
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == FiltersPreviewViewController.identifier() {
+            let previewViewController = segue.destinationViewController as! FiltersPreviewViewController
+            previewViewController.post = sender as! Post
         }
     }
     
@@ -69,6 +65,11 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
         } else {
             self.presentImagePicker(.PhotoLibrary)
         }
+    }
+    
+    @IBAction func editButtonSelected(sender: AnyObject) {
+        guard let image = self.imageView.image else { return }
+        self.performSegueWithIdentifier(FiltersPreviewViewController.identifier(), sender: Post(image: image))
     }
     
     @IBAction func saveButtonSelected(sender: AnyObject) {
@@ -83,6 +84,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.imageView.image = image
+        Filters.original = image
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
