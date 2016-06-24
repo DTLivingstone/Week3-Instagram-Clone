@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -15,12 +15,23 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dza-DR-2ec">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ea1-Zn-rjE" userLabel="imageView" customClass="imageView">
+                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ea1-Zn-rjE" secondAttribute="height" multiplier="1:1" id="VaY-TH-Vah"/>
+                                </constraints>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="dza-DR-2ec">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
+                                    <barButtonItem systemItem="edit" id="dfn-1K-Ejp">
+                                        <connections>
+                                            <action selector="editButtonSelected:" destination="BYZ-38-t0r" id="SRZ-rh-7M1"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="buu-lW-zT7"/>
                                     <barButtonItem systemItem="add" id="7WP-x6-txb">
                                         <connections>
@@ -28,24 +39,26 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tdK-9x-XDE"/>
+                                    <barButtonItem systemItem="save" id="PlC-Ky-GzD">
+                                        <connections>
+                                            <action selector="saveButtonSelected:" destination="BYZ-38-t0r" id="T2F-Xn-6up"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ea1-Zn-rjE" userLabel="imageView" customClass="imageView">
-                                <rect key="frame" x="18" y="64" width="564" height="492"/>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.82" id="3qv-Y2-Jv4"/>
-                            <constraint firstItem="dza-DR-2ec" firstAttribute="centerX" secondItem="Ea1-Zn-rjE" secondAttribute="centerX" id="6Xd-xw-u4o"/>
-                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.94" id="Xin-Gw-Exb"/>
-                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="10" id="git-mQ-2mm"/>
-                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="io3-Qu-v2h"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dza-DR-2ec" secondAttribute="bottom" id="luY-bx-Xyb"/>
-                            <constraint firstItem="dza-DR-2ec" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="msc-FI-04C"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dza-DR-2ec" secondAttribute="bottom" id="0jV-bi-yUw"/>
+                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="6oE-49-yAH"/>
+                            <constraint firstAttribute="trailing" secondItem="dza-DR-2ec" secondAttribute="trailing" id="Iut-aK-7zr"/>
+                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Wux-Eb-Xkc"/>
+                            <constraint firstItem="Ea1-Zn-rjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c74-KM-Acm"/>
+                            <constraint firstItem="dza-DR-2ec" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fBA-4M-1WM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VUe-Uu-dxf"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ImageView" destination="Ea1-Zn-rjE" id="ANA-2d-JQ1"/>
                     </connections>
