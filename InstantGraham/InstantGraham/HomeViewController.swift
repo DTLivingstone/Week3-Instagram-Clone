@@ -58,7 +58,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
         //                                            message: "Please select a filter.",
         //                                            preferredStyle: ???)
         
-        Filters.dotScreen(image) { (theImage) in
+        Filters.shared.dotScreen(image) { (theImage) in
             self.imageView.image = theImage
         }
     }

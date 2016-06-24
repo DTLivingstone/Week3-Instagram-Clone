@@ -9,7 +9,21 @@
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
- 
+    @IBOutlet weak var imageView: UIImageView!
     
+    var post: Post? {
+        didSet {
+            self.imageView.image = post?.image
+        }
+    }
+    
+    class func identifier() -> String {
+        return "ImageCollectionViewCell"
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.imageView.image = nil
+    }
     
 }

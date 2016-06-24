@@ -95,7 +95,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QnH-6i-dez">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="QnH-6i-dez" customClass="ImageCollectionViewCell" customModule="InstantGraham" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64" width="168" height="152"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -114,6 +114,9 @@
                                             <constraint firstItem="0yB-Q2-aTc" firstAttribute="top" secondItem="QnH-6i-dez" secondAttribute="top" id="idA-NT-DhP"/>
                                             <constraint firstAttribute="bottom" secondItem="0yB-Q2-aTc" secondAttribute="bottom" id="tXH-lF-Mry"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="0yB-Q2-aTc" id="eN3-NT-9JM"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
