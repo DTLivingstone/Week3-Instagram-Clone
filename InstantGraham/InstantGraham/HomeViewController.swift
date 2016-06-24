@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FiltersPreviewViewControllerProtocol {
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -56,6 +56,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
         if segue.identifier == FiltersPreviewViewController.identifier() {
             let previewViewController = segue.destinationViewController as! FiltersPreviewViewController
             previewViewController.post = sender as! Post
+            previewViewController.delegate = self
         }
     }
     
@@ -96,5 +97,10 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func filtersPreviewViewControllerDidFinish(image: UIImage) {
+        self.imageView.image = image
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

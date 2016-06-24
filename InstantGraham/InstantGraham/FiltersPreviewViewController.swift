@@ -8,9 +8,16 @@
 
 import UIKit
 
-class FiltersPreviewViewController: UIViewController, UICollectionViewDataSource {
+protocol FiltersPreviewViewControllerProtocol: class {
+    func filtersPreviewViewControllerDidFinish(image: UIImage)
+}
+
+class FiltersPreviewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
     @IBOutlet weak var collection: UICollectionView!
 
+    weak var delegate: FiltersPreviewViewControllerProtocol?
+    
     let filters = [Filters.shared.originalImage, Filters.shared.bw]
     var post = Post()
     
@@ -41,6 +48,14 @@ class FiltersPreviewViewController: UIViewController, UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return self.configureCellForIndexPath(indexPath)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ImageCollectionViewCell
+        guard let image = cell.imageView.image else { return }
+        self.delegate?.filtersPreviewViewControllerDidFinish(image)
+        
     }
     
     override func viewDidLoad() {
