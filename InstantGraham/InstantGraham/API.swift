@@ -6,7 +6,7 @@
 //  Copyright © 2016 David Livingstone. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CloudKit
 
 typealias APICompletion = (success: Bool) -> ()
@@ -33,5 +33,29 @@ class API {
                 })
             }
         } catch { print(error) }
+    }
+    
+    func GET(completion: (posts: [Post]?) -> ()) {
+        let query = CKQuery(recordType: "Post", predicate: NSPredicate(value: true))
+        self.dbase.performQuery(query, inZoneWithID: nil) { (records, error) -> Void in
+            
+            print(error)
+            
+            if let records = records {
+                var posts = [Post]()
+                
+                for record in records {
+                    guard let asset = record["image"] as? CKAsset else { return }
+                    guard let path = asset.fileURL.path else { return }
+                    guard let image = UIImage(contentsOfFile: path) else { return }
+                    
+                    posts.append(Post(image: image))
+                }
+                
+                NSOperationQueue.mainQueue().addOperationWithBlock{ () -> Void in
+                    completion(posts: posts)
+                }
+            }
+        }
     }
 }

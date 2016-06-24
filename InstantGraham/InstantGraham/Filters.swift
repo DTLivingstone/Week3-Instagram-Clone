@@ -12,21 +12,28 @@ typealias FiltersCompletion = (theImage: UIImage?) -> ()
 
 class Filters {
     
+    static let shared = Filters()
+    private init(){
+        let options = [kCIContextWorkingColorSpace: NSNull()]
+        let eAGContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
+        self.context = CIContext(EAGLContext: eAGContext, options: options)
+    }
+    
+    let context: CIContext
+    
     static var original = UIImage() //save original in case user wants to revert changes
     
-    private class func filter(name: String, image: UIImage, completion: FiltersCompletion){
+    private func filter(name: String, image: UIImage, completion: FiltersCompletion){
         NSOperationQueue().addOperationWithBlock {
             guard let filter = CIFilter(name: name) else { fatalError("filter does not exist") }
             
             filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
             
-            let options = [kCIContextWorkingColorSpace: NSNull()]
-            let eAGContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
-            let gPUContext = CIContext(EAGLContext: eAGContext, options: options)
+            
             
             guard let outputImage = filter.outputImage else { fatalError("error rendering image") }
             
-            let cgImage = gPUContext.createCGImage(outputImage, fromRect: outputImage.extent)
+            let cgImage = self.context.createCGImage(outputImage, fromRect: outputImage.extent)
             
             NSOperationQueue.mainQueue().addOperationWithBlock({
                 
@@ -35,15 +42,15 @@ class Filters {
             })
         }
     }
-    class func dotScreen(image: UIImage, completion: FiltersCompletion) {
+    func dotScreen(image: UIImage, completion: FiltersCompletion) {
         self.filter("CIDotScreen", image: image, completion: completion)
     }
     
-    class func blur(image: UIImage, completion: FiltersCompletion) {
+    func blur(image: UIImage, completion: FiltersCompletion) {
         self.filter("CIGaussianBlur", image: image, completion: completion)
     }
     
-    class func crystallize(image: UIImage, completion: FiltersCompletion) {
+    func crystallize(image: UIImage, completion: FiltersCompletion) {
         self.filter("CICrystallize", image: image, completion: completion)
     }
 }
