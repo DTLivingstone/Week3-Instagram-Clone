@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.imageView.image = image
+        self.imageView.image = UIImage.resize(image, size: CGSize(width: 500, height: 500))
         Filters.original = image
         self.dismissViewControllerAnimated(true, completion: nil)
     }
