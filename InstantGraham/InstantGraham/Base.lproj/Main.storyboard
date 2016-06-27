@@ -58,7 +58,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VUe-Uu-dxf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="euE-s4-57W">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="euE-s4-57W">
                             <connections>
                                 <segue destination="B70-7w-fzK" kind="show" id="qmC-Vn-N3J"/>
                             </connections>

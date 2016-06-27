@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     }
     
     func setupAppearance() {
-        self.imageView.layer.cornerRadius = 30
+        self.imageView.layer.cornerRadius = 0
     }
     
     func presentActionSheet() {
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
         guard let image = self.imageView.image else { return }
         API.shared.write(Post(image: image)) { (success) in
             if success {
-                print("Yay")
+                print("save successful")
             }
         }
     }

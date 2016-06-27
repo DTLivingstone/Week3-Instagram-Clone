@@ -9,7 +9,7 @@
 import UIKit
 
 class GalleryViewController: UIViewController, UICollectionViewDataSource {
-
+    
     @IBOutlet weak var colletionView: UICollectionView!
     
     var posts = [Post]() {
@@ -22,7 +22,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
         
         self.setupGalleryViewController()
-        self.setupCollectionView()
+//        self.setupCollectionView()
         
     }
     
@@ -30,10 +30,10 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
         super.viewWillAppear(animated)
         self.update()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
+        
     }
     
     // MARK: - UICollectionViewDataSource
@@ -54,9 +54,28 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
         self.navigationItem.title = "Gallery"
     }
     
-    func setupCollectionView() {
-        self.colletionView.collectionViewLayout = GalleryCustomLayout(columns: 3)
-    }
+//    func setupCollectionView() {
+//        self.colletionView.collectionViewLayout = GalleryCustomLayout(columns: 3)
+//        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(GalleryViewController.pinchedCollectionView(_:)))
+//        self.collectionView.addGestureRecognizer(pinchGesture)
+//    }
+    
+//    func pinchedCollectionView(sender: UIPinchGestureRecognizer) {
+//        let layout = self.collectionView.collectionViewLayout as! GalleryCustomLayout
+//        var columns = layout.columns
+//        if sender.state == .Ended {
+//            if sender.scale > 1.0 {
+//                columns += 1
+//            }
+//            else if sender.scale < 1.0 {
+//                if columns > 1 {
+//                    columns -= 1
+//                }
+//            }
+//        }
+//        self.collectionView.setCollectionViewLayout(GalleryColumnFlowLayout(columns: columns), animated: true)
+//        self.collectionView.collectionViewLayout.invalidateLayout()
+//    }
     
     func update() {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
@@ -72,15 +91,14 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
         }
     }
     
-    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
