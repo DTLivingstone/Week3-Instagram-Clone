@@ -26,7 +26,7 @@ class GalleryCustomLayout: UICollectionViewFlowLayout {
     func setup() {
         self.minimumLineSpacing = self.spacing
         self.minimumInteritemSpacing = self.spacing
-        self.itemSize = CGSizeMake(self.itemWidth(), self.itemWidth() * 2.0)
+        self.itemSize = CGSizeMake(self.itemWidth(), self.itemWidth())
     }
     
     func screenWidth() -> CGFloat {

@@ -24,7 +24,9 @@ class Filters {
     static var original = UIImage() //save original in case user wants to revert changes
     
     private func filter(name: String, image: UIImage, completion: FiltersCompletion){
+        
         NSOperationQueue().addOperationWithBlock {
+            
             guard let filter = CIFilter(name: name) else { fatalError("filter does not exist") }
             
             filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
@@ -42,12 +44,17 @@ class Filters {
             })
         }
     }
-    func dotScreen(image: UIImage, completion: FiltersCompletion) {
-        self.filter("CIDotScreen", image: image, completion: completion)
+    
+    func originalImage(image: UIImage, completion: FiltersCompletion) {
+        completion(theImage: Filters.original)
     }
     
-    func blur(image: UIImage, completion: FiltersCompletion) {
-        self.filter("CIGaussianBlur", image: image, completion: completion)
+    func bw(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CIPhotoEffectMono", image: image, completion: completion)
+    }
+    
+    func dotScreen(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CIDotScreen", image: image, completion: completion)
     }
     
     func crystallize(image: UIImage, completion: FiltersCompletion) {

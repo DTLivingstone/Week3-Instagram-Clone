@@ -27,7 +27,6 @@ class API {
             if let record = try Post.recordWith(post) {
                 self.dbase.saveRecord(record, completionHandler: { (record, error) in
                     if error == nil && record != nil{
-                        print(record)
                         completion(success: true)
                     }
                 })

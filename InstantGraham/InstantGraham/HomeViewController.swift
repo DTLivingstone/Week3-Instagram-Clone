@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FiltersPreviewViewControllerProtocol {
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     }
     
     func setupAppearance() {
-        self.imageView.layer.cornerRadius = 30
+        self.imageView.layer.cornerRadius = 0
     }
     
     func presentActionSheet() {
@@ -51,15 +51,12 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     
     //MARK: UIImagePickerControllerDeligate
     
-    @IBAction func editButtonSelected(sender: AnyObject) {
-        guard let image = self.imageView.image else { return }
-        
-        //        let actionSheet = UIAlertController(title: "FIlters",
-        //                                            message: "Please select a filter.",
-        //                                            preferredStyle: ???)
-        
-        Filters.shared.dotScreen(image) { (theImage) in
-            self.imageView.image = theImage
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == FiltersPreviewViewController.identifier() {
+            let previewViewController = segue.destinationViewController as! FiltersPreviewViewController
+            previewViewController.post = sender as! Post
+            previewViewController.delegate = self
         }
     }
     
@@ -71,18 +68,24 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
         }
     }
     
+    @IBAction func editButtonSelected(sender: AnyObject) {
+        guard let image = self.imageView.image else { return }
+        self.performSegueWithIdentifier(FiltersPreviewViewController.identifier(), sender: Post(image: image))
+    }
+    
     @IBAction func saveButtonSelected(sender: AnyObject) {
         guard let image = self.imageView.image else { return }
         API.shared.write(Post(image: image)) { (success) in
             if success {
-                print("Yay")
+                print("save successful")
             }
         }
     }
     
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.imageView.image = image
+        self.imageView.image = UIImage.resize(image, size: CGSize(width: 500, height: 500))
+        Filters.original = image
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -94,5 +97,10 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func filtersPreviewViewControllerDidFinish(image: UIImage) {
+        self.imageView.image = image
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
