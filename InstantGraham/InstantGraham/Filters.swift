@@ -8,24 +8,24 @@
 
 import UIKit
 
-typealias FiltersCompletion = (theImage: UIImage?) -> ()
+typealias FiltersCompletion = (_ theImage: UIImage?) -> ()
 
 class Filters {
     
     static let shared = Filters()
-    private init(){
+    fileprivate init(){
         let options = [kCIContextWorkingColorSpace: NSNull()]
-        let eAGContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
-        self.context = CIContext(EAGLContext: eAGContext, options: options)
+        let eAGContext = EAGLContext(api: EAGLRenderingAPI.openGLES2)
+        self.context = CIContext(eaglContext: eAGContext!, options: options)
     }
     
     let context: CIContext
     
     static var original = UIImage() //save original in case user wants to revert changes
     
-    private func filter(name: String, image: UIImage, completion: FiltersCompletion){
+    fileprivate func filter(_ name: String, image: UIImage, completion: @escaping FiltersCompletion){
         
-        NSOperationQueue().addOperationWithBlock {
+        OperationQueue().addOperation {
             
             guard let filter = CIFilter(name: name) else { fatalError("filter does not exist") }
             
@@ -35,29 +35,29 @@ class Filters {
             
             guard let outputImage = filter.outputImage else { fatalError("error rendering image") }
             
-            let cgImage = self.context.createCGImage(outputImage, fromRect: outputImage.extent)
+            let cgImage = self.context.createCGImage(outputImage, from: outputImage.extent)
             
-            NSOperationQueue.mainQueue().addOperationWithBlock({
+            OperationQueue.main.addOperation({
                 
-                completion(theImage: UIImage(CGImage: cgImage))
+                completion(UIImage(cgImage: cgImage!))
                 
             })
         }
     }
     
-    func originalImage(image: UIImage, completion: FiltersCompletion) {
-        completion(theImage: Filters.original)
+    func originalImage(_ image: UIImage, completion: FiltersCompletion) {
+        completion(Filters.original)
     }
     
-    func bw(image: UIImage, completion: FiltersCompletion) {
+    func bw(_ image: UIImage, completion: @escaping FiltersCompletion) {
         self.filter("CIPhotoEffectMono", image: image, completion: completion)
     }
     
-    func dotScreen(image: UIImage, completion: FiltersCompletion) {
+    func dotScreen(_ image: UIImage, completion: @escaping FiltersCompletion) {
         self.filter("CIDotScreen", image: image, completion: completion)
     }
     
-    func crystallize(image: UIImage, completion: FiltersCompletion) {
+    func crystallize(_ image: UIImage, completion: @escaping FiltersCompletion) {
         self.filter("CICrystallize", image: image, completion: completion)
     }
 }

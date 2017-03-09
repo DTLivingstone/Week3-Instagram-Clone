@@ -9,25 +9,25 @@
 import UIKit
 
 extension UIImage {
-    class func resize(image: UIImage, size: CGSize) -> UIImage {
+    class func resize(_ image: UIImage, size: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(size)
-        image.drawInRect(CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
         
-        return resizedImage
+        return resizedImage!
     }
 }
 
-extension NSURL {
+extension URL {
     
-    static func imageURL() -> NSURL {
-        guard let documentDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else {
+    static func imageURL() -> URL {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
                 fatalError("error getting documents")
         }
-        return documentDirectory.URLByAppendingPathComponent("image")
+        return documentDirectory.appendingPathComponent("image")
     }
     
 }

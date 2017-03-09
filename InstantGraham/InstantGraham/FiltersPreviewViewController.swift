@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FiltersPreviewViewControllerProtocol: class {
-    func filtersPreviewViewControllerDidFinish(image: UIImage)
+    func filtersPreviewViewControllerDidFinish(_ image: UIImage)
 }
 
 class FiltersPreviewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -29,11 +29,11 @@ class FiltersPreviewViewController: UIViewController, UICollectionViewDataSource
         self.collection.collectionViewLayout = GalleryCustomLayout(columns: 2)
     }
     
-    func configureCellForIndexPath(indexPath: NSIndexPath) -> ImageCollectionViewCell {
+    func configureCellForIndexPath(_ indexPath: IndexPath) -> ImageCollectionViewCell {
         
-        let imageCell = self.collection.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier(), forIndexPath: indexPath) as! ImageCollectionViewCell
+        let imageCell = self.collection.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier(), for: indexPath) as! ImageCollectionViewCell
         
-        self.filters[indexPath.row](post.image, completion: {
+        self.filters[indexPath.row](post.image, {
             
             imageCell.imageView.image = $0
             
@@ -42,17 +42,17 @@ class FiltersPreviewViewController: UIViewController, UICollectionViewDataSource
         return imageCell
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.filters.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return self.configureCellForIndexPath(indexPath)
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ImageCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionViewCell
         guard let image = cell.imageView.image else { return }
         self.delegate?.filtersPreviewViewControllerDidFinish(image)
         

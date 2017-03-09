@@ -9,17 +9,17 @@
 import UIKit
 import CloudKit
 
-enum PostError: ErrorType {
-    case WritingImage
-    case CreateCKRecord
+enum PostError: Error {
+    case writingImage
+    case createCKRecord
 }
 
 extension Post {
-    class func recordWith(post: Post) throws -> CKRecord? {
-        let imageURL = NSURL.imageURL()
-        guard let data = UIImageJPEGRepresentation(post.image, 0.7) else { throw PostError.WritingImage }
+    class func recordWith(_ post: Post) throws -> CKRecord? {
+        let imageURL = URL.imageURL()
+        guard let data = UIImageJPEGRepresentation(post.image, 0.7) else { throw PostError.writingImage }
         
-        let saved = data.writeToURL(imageURL, atomically: true)
+        let saved = (try? data.write(to: imageURL, options: [.atomic])) != nil
         
         if saved {
             let asset = CKAsset(fileURL: imageURL)
@@ -28,7 +28,7 @@ extension Post {
             
             return record
         } else {
-            throw PostError.CreateCKRecord
+            throw PostError.createCKRecord
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-typealias APICompletion = (success: Bool) -> ()
+typealias APICompletion = (_ success: Bool) -> ()
 
 class API {
     static let shared = API()
@@ -17,15 +17,15 @@ class API {
     let container: CKContainer
     let dbase: CKDatabase
     
-    private init(){
-        self.container = CKContainer.defaultContainer()
+    fileprivate init(){
+        self.container = CKContainer.default()
         self.dbase = self.container.privateCloudDatabase
     }
     
-    func write(post: Post, completion: APICompletion) {
+    func write(_ post: Post, completion: @escaping APICompletion) {
         do {
             if let record = try Post.recordWith(post) {
-                self.dbase.saveRecord(record, completionHandler: { (record, error) in
+                self.dbase.save(record, completionHandler: { (record, error) in
                     if error == nil && record != nil{
                         completion(success: true)
                     }
@@ -34,9 +34,9 @@ class API {
         } catch { print(error) }
     }
     
-    func GET(completion: (posts: [Post]?) -> ()) {
+    func GET(_ completion: @escaping (_ posts: [Post]?) -> ()) {
         let query = CKQuery(recordType: "Post", predicate: NSPredicate(value: true))
-        self.dbase.performQuery(query, inZoneWithID: nil) { (records, error) -> Void in
+        self.dbase.perform(query, inZoneWith: nil) { (records, error) -> Void in
             
             print(error)
             
@@ -51,8 +51,8 @@ class API {
                     posts.append(Post(image: image))
                 }
                 
-                NSOperationQueue.mainQueue().addOperationWithBlock{ () -> Void in
-                    completion(posts: posts)
+                OperationQueue.main.addOperation{ () -> Void in
+                    completion(posts)
                 }
             }
         }

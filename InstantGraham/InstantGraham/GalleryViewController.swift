@@ -26,7 +26,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.update()
     }
@@ -38,12 +38,12 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
     
     // MARK: - UICollectionViewDataSource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier(), forIndexPath: indexPath) as! ImageCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier(), for: indexPath) as! ImageCollectionViewCell
         let post = posts[indexPath.row]
         cell.post = post
         
@@ -78,7 +78,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
 //    }
     
     func update() {
-        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         spinner.hidesWhenStopped = true
         spinner.startAnimating()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)

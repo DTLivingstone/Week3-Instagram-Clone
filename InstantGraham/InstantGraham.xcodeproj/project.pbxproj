@@ -18,7 +18,6 @@
 		63503EC11D19F11200060E17 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503EC01D19F11200060E17 /* API.swift */; };
 		63503EC31D19F14C00060E17 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503EC21D19F14C00060E17 /* Filters.swift */; };
 		63CE7BEE1D1DE010004F009D /* FiltersPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE7BED1D1DE010004F009D /* FiltersPreviewViewController.swift */; };
-		63DA42971D19ECA40021D194 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DA42961D19ECA40021D194 /* CloudKit.framework */; };
 		63E44D2C1D187FDB003D56D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */; };
 		63E44D311D187FDB003D56D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E44D2F1D187FDB003D56D6 /* Main.storyboard */; };
 		63E44D331D187FDB003D56D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E44D321D187FDB003D56D6 /* Assets.xcassets */; };
@@ -38,7 +37,6 @@
 		63503EC21D19F14C00060E17 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		63CE7BED1D1DE010004F009D /* FiltersPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersPreviewViewController.swift; sourceTree = "<group>"; };
 		63DA42951D19EC8D0021D194 /* InstantGraham.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = InstantGraham.entitlements; sourceTree = "<group>"; };
-		63DA42961D19ECA40021D194 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		63E44D281D187FDB003D56D6 /* InstantGraham.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantGraham.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E44D2B1D187FDB003D56D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63E44D301D187FDB003D56D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,7 +50,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63DA42971D19ECA40021D194 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +96,6 @@
 		63E44D1F1D187FDA003D56D6 = {
 			isa = PBXGroup;
 			children = (
-				63DA42961D19ECA40021D194 /* CloudKit.framework */,
 				63E44D2A1D187FDB003D56D6 /* InstantGraham */,
 				63E44D291D187FDB003D56D6 /* Products */,
 			);
@@ -151,15 +147,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "David Livingstone";
 				TargetAttributes = {
 					63E44D271D187FDB003D56D6 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = Y46ZLX9Z9E;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -252,8 +250,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -275,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -298,8 +298,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -315,9 +317,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -327,12 +330,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = InstantGraham/InstantGraham.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y46ZLX9Z9E;
 				INFOPLIST_FILE = InstantGraham/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tl.david.InstantGraham2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -340,12 +346,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = InstantGraham/InstantGraham.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y46ZLX9Z9E;
 				INFOPLIST_FILE = InstantGraham/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tl.david.InstantGraham2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

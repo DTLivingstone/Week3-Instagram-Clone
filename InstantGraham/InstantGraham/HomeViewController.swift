@@ -25,55 +25,55 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     func presentActionSheet() {
         let actionSheet = UIAlertController(title: "Source",
                                             message: "Please select the image source",
-                                            preferredStyle: .ActionSheet)
+                                            preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera",
-                                         style: .Default) {(action) in self.presentImagePicker(.Camera)
+                                         style: .default) {(action) in self.presentImagePicker(.camera)
         }
         let photoAction = UIAlertAction(title: "Photos",
-                                        style: .Default) {(action) in self.presentImagePicker(.PhotoLibrary)
+                                        style: .default) {(action) in self.presentImagePicker(.photoLibrary)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         actionSheet.addAction(cameraAction)
         actionSheet.addAction(photoAction)
         actionSheet.addAction(cancelAction)
         
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
-    func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
+    func presentImagePicker(_ sourceType: UIImagePickerControllerSourceType) {
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
-        self.presentViewController(self.imagePicker,
+        self.present(self.imagePicker,
                                    animated: true,
                                    completion: nil)
     }
     
     //MARK: UIImagePickerControllerDeligate
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == FiltersPreviewViewController.identifier() {
-            let previewViewController = segue.destinationViewController as! FiltersPreviewViewController
+            let previewViewController = segue.destination as! FiltersPreviewViewController
             previewViewController.post = sender as! Post
             previewViewController.delegate = self
         }
     }
     
-    @IBAction func addButtonSelected(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+    @IBAction func addButtonSelected(_ sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
             self.presentActionSheet()
         } else {
-            self.presentImagePicker(.PhotoLibrary)
+            self.presentImagePicker(.photoLibrary)
         }
     }
     
-    @IBAction func editButtonSelected(sender: AnyObject) {
+    @IBAction func editButtonSelected(_ sender: AnyObject) {
         guard let image = self.imageView.image else { return }
-        self.performSegueWithIdentifier(FiltersPreviewViewController.identifier(), sender: Post(image: image))
+        self.performSegue(withIdentifier: FiltersPreviewViewController.identifier(), sender: Post(image: image))
     }
     
-    @IBAction func saveButtonSelected(sender: AnyObject) {
+    @IBAction func saveButtonSelected(_ sender: AnyObject) {
         guard let image = self.imageView.image else { return }
         API.shared.write(Post(image: image)) { (success) in
             if success {
@@ -83,10 +83,10 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
     }
     
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.imageView.image = UIImage.resize(image, size: CGSize(width: 500, height: 500))
         Filters.original = image
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -99,8 +99,8 @@ class HomeViewController: UIViewController, Setup, UIImagePickerControllerDelega
         super.didReceiveMemoryWarning()
     }
     
-    func filtersPreviewViewControllerDidFinish(image: UIImage) {
+    func filtersPreviewViewControllerDidFinish(_ image: UIImage) {
         self.imageView.image = image
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
