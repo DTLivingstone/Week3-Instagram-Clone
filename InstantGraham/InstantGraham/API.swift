@@ -27,7 +27,7 @@ class API {
             if let record = try Post.recordWith(post) {
                 self.dbase.save(record, completionHandler: { (record, error) in
                     if error == nil && record != nil{
-                        completion(success: true)
+                        completion(true) // deleted success:
                     }
                 })
             }
@@ -38,14 +38,14 @@ class API {
         let query = CKQuery(recordType: "Post", predicate: NSPredicate(value: true))
         self.dbase.perform(query, inZoneWith: nil) { (records, error) -> Void in
             
-            print(error)
+            print(error as Any)
             
             if let records = records {
                 var posts = [Post]()
                 
                 for record in records {
-                    guard let asset = record["image"] as? CKAsset else { return }
-                    guard let path = asset.fileURL.path else { return }
+                    guard let asset = record["image"] as? CKAsset? else { return }
+                    guard let path = asset?.fileURL.path else { return }
                     guard let image = UIImage(contentsOfFile: path) else { return }
                     
                     posts.append(Post(image: image))
